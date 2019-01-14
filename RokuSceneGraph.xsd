@@ -252,6 +252,10 @@
                         <xs:enumeration value="Audio"/>
                         <xs:enumeration value="AnimationBase"/>
                         <xs:enumeration value="MarkupList"/>
+                        <xs:enumeration value="BaseView"/>
+                        <xs:enumeration value="BaseScreen"/>
+                        <xs:enumeration value="BaseScene"/>
+                        <xs:enumeration value="BaseAggregateView"/>
                     </xs:restriction>
                 </xs:simpleType>
             </xs:attribute>
@@ -7484,6 +7488,10 @@
                             </xs:annotation>
                         </xs:attribute>
                     </xs:complexType>
+                </xs:element>
+                <xs:element name="NavController">
+                </xs:element>
+                <xs:element name="TabController">
                 </xs:element>
             </xs:choice>
         </xs:choice>
