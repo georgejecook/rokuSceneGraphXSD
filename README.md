@@ -1,6 +1,6 @@
 # Overview
 
-Here you'll find an updated version of Roku SceneGraph's xsd, because the [published one[(https://devtools.web.roku.com/schema/RokuSceneGraph.xsd)] is out of date
+Here you'll find an updated version of Roku SceneGraph's xsd, because the [published one](https://devtools.web.roku.com/schema/RokuSceneGraph.xsd] is out of date
 
 ## This project should not even exist: Please ask Roku to update their XSD
 
@@ -10,7 +10,7 @@ Email them and let them know that this is a priority for you: this repo should n
 
 # Suggested use
 
-Here's one unobtrusive workaroudn I've figured out, which works for me:
+Here's one unobtrusive workaround I've figured out, which works for me:
 
  - Fork this repo (so you can submit pull requests for any fixes you make), and clone to your machine 
  - Install redhat xml [plugin](https://developers.redhat.com/blog/2018/12/04/xml-language-server-vscode-extension/) (if you haven't already)
