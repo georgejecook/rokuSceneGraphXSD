@@ -178,6 +178,11 @@
                         </xs:attribute>
                     </xs:complexType>
                 </xs:element>
+                <xs:element maxOccurs="1" minOccurs="0" name="interface">
+                    <xs:annotation>
+                        <xs:documentation>&lt;b&gt;Description: Interface definition for component. Contains field and funciton definitions</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
                 <xs:element maxOccurs="1" minOccurs="0" name="children">
                     <xs:annotation>
                         <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;b&gt;More: &lt;/b&gt;&lt;a href="https://sdkdocs.roku.com/pages/viewpage.action?pageId=1608551"&gt;https://sdkdocs.roku.com/pages/viewpage.action?pageId=1608551&lt;/a&gt;</xs:documentation>
