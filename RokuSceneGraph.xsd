@@ -4499,7 +4499,7 @@
                                 </xs:restriction>
                             </xs:simpleType>
                         </xs:attribute>
-                        <xs:attribute default="Off" name="globalCaptionMode">
+                        <xs:attribute name="globalCaptionMode">
                             <xs:annotation>
                                 <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;Sets the value of the global Roku closed-caption mode. This can be used to allow the user or the application to change the closed-caption mode in an application just before or during video playback. The possible options are: Option Effect "Off" Turns the global Roku closed-caption mode off. "On" Turns the global Roku closed-caption mode on. "Instant replay" Sets the global Roku closed-caption setting to display captions only during instant replay. "When mute" Sets the global Roku closed-caption setting to display captions only when the volume is muted. (This only applies to Roku TVs.)</xs:documentation>
                             </xs:annotation>
