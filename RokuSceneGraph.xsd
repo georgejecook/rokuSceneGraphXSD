@@ -133,6 +133,16 @@
                                                         <xs:documentation>Associative array</xs:documentation>
                                                     </xs:annotation>
                                                 </xs:enumeration>
+                                                <xs:enumeration value="array">
+                                                    <xs:annotation>
+                                                        <xs:documentation>Array</xs:documentation>
+                                                    </xs:annotation>
+                                                </xs:enumeration>
+                                                <xs:enumeration value="boolean">
+                                                    <xs:annotation>
+                                                        <xs:documentation>Array</xs:documentation>
+                                                    </xs:annotation>
+                                                </xs:enumeration>
                                             </xs:restriction>
                                         </xs:simpleType>
                                     </xs:attribute>
