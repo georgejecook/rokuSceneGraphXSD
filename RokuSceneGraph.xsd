@@ -5552,6 +5552,9 @@
                                 <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;Specifies the size of the font in points.</xs:documentation>
                             </xs:annotation>
                         </xs:attribute>
+                        <xs:attribute default="" name="role" type="xs:string">
+                          <!-- TODO - add annotation info -->
+                        </xs:attribute>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="ContentNode">
