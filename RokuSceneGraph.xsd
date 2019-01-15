@@ -12,6 +12,18 @@
                     </xs:annotation>
                     <xs:complexType>
                         <xs:sequence minOccurs="0">
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="function">
+                              <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;null&lt;br/&gt;&lt;br/&gt;&lt;b&gt;More: &lt;/b&gt;&lt;a href="null"&gt;null&lt;/a&gt;</xs:documentation>
+                              </xs:annotation>
+                              <xs:complexType>
+                                <xs:attribute name="name" use="required">
+                                  <xs:annotation>
+                                    <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;A string containing the name of the function</xs:documentation>
+                                  </xs:annotation>
+                                </xs:attribute>
+                              </xs:complexType>
+                            </xs:element>
                             <xs:element maxOccurs="unbounded" minOccurs="0" name="field">
                                 <xs:annotation>
                                     <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;null&lt;br/&gt;&lt;br/&gt;&lt;b&gt;More: &lt;/b&gt;&lt;a href="null"&gt;null&lt;/a&gt;</xs:documentation>
