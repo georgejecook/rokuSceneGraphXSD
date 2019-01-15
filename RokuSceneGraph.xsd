@@ -12,6 +12,18 @@
                     </xs:annotation>
                     <xs:complexType>
                         <xs:sequence minOccurs="0">
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="function">
+                              <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;null&lt;br/&gt;&lt;br/&gt;&lt;b&gt;More: &lt;/b&gt;&lt;a href="null"&gt;null&lt;/a&gt;</xs:documentation>
+                              </xs:annotation>
+                              <xs:complexType>
+                                <xs:attribute name="name" use="required">
+                                  <xs:annotation>
+                                    <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;A string containing the name of the function</xs:documentation>
+                                  </xs:annotation>
+                                </xs:attribute>
+                              </xs:complexType>
+                            </xs:element>
                             <xs:element maxOccurs="unbounded" minOccurs="0" name="field">
                                 <xs:annotation>
                                     <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;null&lt;br/&gt;&lt;br/&gt;&lt;b&gt;More: &lt;/b&gt;&lt;a href="null"&gt;null&lt;/a&gt;</xs:documentation>
@@ -262,6 +274,11 @@
                         <xs:enumeration value="Audio"/>
                         <xs:enumeration value="AnimationBase"/>
                         <xs:enumeration value="MarkupList"/>
+                        <xs:enumeration value="ZLabel"/>
+                        <xs:enumeration value="ZActionButton"/>
+                        <xs:enumeration value="TabController"/>
+                        <xs:enumeration value="NavController"/>
+                        <xs:enumeration value="MultiContainer"/>
                     </xs:restriction>
                 </xs:simpleType>
             </xs:attribute>
@@ -7491,6 +7508,220 @@
                         <xs:attribute default="0" name="animateToItem" type="xs:integer">
                             <xs:annotation>
                                 <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;Write-Only When set to a valid item index, this causes the list to quickly scroll so that the specified index moves into the focus position.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="BaseView">
+                  <xs:annotation>
+                      <xs:documentation>&lt;b&gt;Extends: &lt;/b&gt;:Group&lt;br/&gt;&lt;Base of all maestro views.</xs:documentation>
+                  </xs:annotation>
+                </xs:element>
+                <xs:element name="BaseScreen">
+                  <xs:annotation>
+                      <xs:documentation>&lt;b&gt;Extends: &lt;/b&gt;:Group&lt;br/&gt;&lt;Base of all maestro screens.</xs:documentation>
+                  </xs:annotation>
+                </xs:element>
+                <xs:element name="ZActionButton">
+                  <xs:annotation>
+                    <xs:documentation>&lt;b&gt;Extends: &lt;/b&gt;:BaseView&lt;br/&gt;&lt;Specialized button which styles itself based on predefined buttonType values. Can also be rapidly styled with a style aa. This button handles it's own apperance based on the isFocused setting, as managed by the FocusManager</xs:documentation>
+                  </xs:annotation>
+                  <xs:complexType>
+                    <xs:group ref="allNodes"/>
+                    <xs:attribute default="" name="id" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;Adds a dictionary entry that allows the node to be retrieved with ifSGDictionary findNode() function</xs:documentation>
+                      </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute default="false" name="selected" type="xs:boolean">
+                      <xs:annotation>
+                        <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;Is set to true when this button is selected</xs:documentation>
+                      </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute default="true" name="isUpdatingWhenCreated" type="xs:boolean">
+                      <xs:annotation>
+                        <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;&lt;b&gt;Extends: &lt;/b&gt;:BaseView&lt;br/&gt;&lt;Specialized button which styles itself based on predefined buttonType values. Can also be rapidly styled with a style aa. This button handles it's own apperance based on the isFocused setting, as managed by the FocusManager</xs:documentation>
+                      </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute default="false" name="style" type="NA">
+                      <xs:annotation>
+                        <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;an aa of common styles to set on the label, containing: &lt;br/&gt;normal: {&lt;br/&gt;
+                          font: Font&lt;br/&gt;
+                          color: hexColor&lt;br/&gt;
+                          background_color: hexColor&lt;br/&gt;
+                        }&lt;br/&gt;
+                        highlighted {&lt;br/&gt;
+                          font: Font&lt;br/&gt;
+                          color: hexColor&lt;br/&gt;
+                          background_color: hexColor&lt;br/&gt;
+                        }&lt;br/&gt;
+                        text: string&lt;br/&gt;
+                        buttonType: as per buttonType field&lt;br/&gt;
+                        placeholderFont: string as per MLabel font spec - used when the button has &lt;br/&gt;textInputPlaceholder style</xs:documentation>
+                      </xs:annotation>
+                    </xs:attribute>
+                  </xs:complexType>
+                </xs:element>
+                    
+                        <xs:element name="ZLabel">
+                    <xs:annotation>
+                        <xs:documentation>&lt;b&gt;Extends: &lt;/b&gt;:Label&lt;br/&gt;&lt;Specialized label which allows styling of many common fields from one aa, for vm binding efficiency and convenience.</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:group ref="allNodes"/>
+                        <xs:attribute default="" name="id" type="xs:string">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;Adds a dictionary entry that allows the node to be retrieved with ifSGDictionary findNode() function</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="N/A" name="focusedChild" type="NA">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;When a node or one of its children gains or loses the keyboard focus, the focusedChild field will be set and call its observer functions. In the observer function, typically, you use ifSGNodeFocus functions to query whether this node or some other node has the key focus or is in the key focus chain. Accessing the value of the field will result in script errors.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="false" name="focusable" type="xs:boolean">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;Provides a hint as to whether or not this node can take the key focus</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="false" name="style" type="NA">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;an aa of common styles to set on the label, containing: font, color, text</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="true" name="visible" type="xs:boolean">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;If true, the node and its children are rendered. If false, the node and its children do not render.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="1.0" name="opacity" type="xs:float">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;Sets the opacity of the node and its children. Opacity is the opposite of transparency. Opacity values range from 0.0 (fully transparent) to 1.0 (fully opaque). As the scene graph is traversed, the opacity values are combined by multiplying the current accumulated opacity with the node opacity, so that if the accumulated opacity of a node ancestors is 0.25 (75% transparent), the node will have opacity of 0.25 or less. This allows entire branches of the scene graph to fade in and out by animating the opacity of the node at the root of the branch.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="[0.0,0.0]" name="translation" type="vector2d">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;Defines the origin of the node local coordinate system relative to its parent node.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="0.0" name="rotation" type="xs:float">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;Defines the rotation angle about the scaleRotateCenter point (in radians) of the node local coordinate system. Positive values specify a counterclockwise rotation, negative values specify a clockwise rotation. For some Roku Player hardware, only rotations of 0, 90, 180 and 270 degrees are supported.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="[1.0,1.0]" name="scale" type="vector2d">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;Defines the scale factor to be applied to the node local coordinate</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="[0.0,0.0]" name="scaleRotateCenter" type="vector2d">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;Describes the location of a point in the node local coordinate that serves as the center of the scale and rotation operations</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="renderLast" name="childRenderOrder" type="option_string">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;If the value is renderFirst, any drawing done by this node will be done before the node children are rendered. If the value is renderLast, any drawing done by this node will be done after the node children are rendered.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="true" name="inheritParentTransform" type="xs:boolean">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;If true, the node overall transformation is determined by combining the accumulated transformation matrix of all of its ancestors in the scene graph with the node local 2D transformation matrix described by its translation, rotation, scale and scaleRotateCenter fields. If false, the accumulated transformation of all of its ancestors in the Scene Graph is ignored and only the node local transformation matrix is used. This causes the node to be transformed relative to the root of the Scene Graph (that is, the Scene component).</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="true" name="inheritParentOpacity" type="xs:boolean">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;If true, the node opacity is determined by multiplying opacity attribute of the node by the opacity of the parent node, which may have been determined by multiplying the opacity of its ancestor nodes. If false, the node opacity is determined by the opacity attribute set for the node or the default opacity attribute value.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="[ NaN, NaN, 0.0, 0.0 ]" name="clippingRect" type="array_of_float">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;Specifies a rectangle in the node local coordinate system that is used to limit the region where this node and its children can render. If a non-empty rectangle is specified, then all drawing by this node and its children will be limited to that rectangular area.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="0" name="renderPass" type="xs:integer">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;Used in combination with the numRenderPasses field of nodes extended from the  abstract node class, to optimize rendering of lists and grids. This should never be set to a non-zero value unless you are optimizing the performance of a list or grid rendering by specifying the sequence of rendering operations for sub-elements of the list or grid items, and have set the numRenderPasses field value for the list or grid to a value greater than 1. If the numRenderPasses field value for the list or grid is set to a value greater than 1, you must set this field to a value greater than 0 for all sub-elements of the list or grid items, and not greater than the numRenderPasses field value. If the numRenderPasses field is set to a value greater than 1, and you set this field for a list or grid item sub-element to 0 (the default), or a value greater than the numRenderPasses field value, the list or grid item sub-element will not render.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="" name="text" type="xs:string">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;Specifies the text to be displayed.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="0xddddddff" name="color" type="color">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;Specifies the text color.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="system default" name="font" type="Font">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;Specifies the Font node to be used.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="left" name="horizAlign" type="xs:string">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;See Horizontal Alignment.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="top" name="vertAlign" type="xs:string">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;See Vertical Alignment.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="0" name="width" type="xs:float">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;Specifies the width of the label. If set to zero, the text is always displayed as a single line.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="0" name="height" type="xs:float">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;Specifies the height of the label. If set to zero, the actual height is determined by the value of the numLines field if it is greater than zero. See Vertical Alignment and for more details.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="0" name="numLines" type="xs:integer">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;If the height field value is zero, provides an alternate way to specify the height of the bounding rectangle of the label. See Vertical Alignment and for more details.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="0" name="maxLines" type="xs:integer">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;If the height and numLines field values are both zero, specifies the maximum number of lines of text to be displayed. See Vertical Alignment and for more details.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="false" name="wrap" type="xs:boolean">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;See .</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="0" name="lineSpacing" type="xs:float">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;If the text is displayed on more than one line, specifies the amount of additional space added between lines.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="false" name="displayPartialLines" type="xs:boolean">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;If the height field value is greater than zero, used to determine whether or not the last line of visible text is displayed if it would be clipped vertically.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="false" name="ellipsizeOnBoundary" type="xs:boolean">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;If the width field value is greater than zero, controls whether or not the last line of text displayed should be ellipsized if it extends beyonds the specified width. It is ignored if the truncateOnDelimiter field value is set to a non-empty string.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="" name="truncateOnDelimiter" type="xs:string">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;If the width field value is greater than zero, provides a set of characters that are used to determine how to truncate the last line of text that is displayed if it extends beyond the specified width. If none of the characters in the last line of text are included in the truncateOnDelimiter field value string, the entire last line is not displayed. When the value is set to a non-empty string, the ellipsizeOnBoundary field value is ignored.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="" name="wordBreakChars" type="xs:string">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;By default, space and hyphen characters are used to determine where lines can be divided. In addition, this field can specify additional characters to be used to determine where the text can be broken into lines.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="" name="ellipsisText" type="xs:string">
+                            <xs:annotation>
+                                <xs:documentation>&lt;b&gt;Description: &lt;/b&gt;&lt;br/&gt;By default, three dots (...) are used to ellipsize the last line of text that extends beyond the bounding rectangle. This field specifies alternate characters to be displayed when the last line of text is ellipsized.</xs:documentation>
                             </xs:annotation>
                         </xs:attribute>
                     </xs:complexType>
