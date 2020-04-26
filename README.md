@@ -2,10 +2,6 @@
 
 ~~Here you'll find an updated version of Roku SceneGraph's xsd, because the [published one](https://devtools.web.roku.com/schema/RokuSceneGraph.xsd] is out of date~~
 
-## ~~This project should not even exist: Please ask Roku to update their XSD~~
-
-~~It's a shame they don't keep it up to date as it means those of us working hard to make developer tools can't serve you as well as we'd like. ~~
-~~
 
 This repo existed to work around there being no official XSD for scenegraph. 2 things have changed.
 
